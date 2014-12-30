@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "class.php";
-require "user.php";
+require "functions.php";
 $err = "";
 $id = $_GET['uid'];
 if ($_SESSION['se_level'] != 1) {

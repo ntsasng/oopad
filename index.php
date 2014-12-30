@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	require "class.php";
-	require "user.php";
+	require "functions.php";
 	if ( $_SESSION['se_level'] != 1 ) {
 		header('location: login.php');
 		exit();

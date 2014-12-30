@@ -1,7 +1,7 @@
 <?php
 session_start();
 require "class.php";
-require "user.php";
+require "functions.php";
 $err = "";
 if (isset($_POST['ok'])) {
 	$u = $p = "";
