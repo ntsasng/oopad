@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+error_reporting(E_ALL ^ E_DEPRECATED);
 class Database {
 	private $_hostname 	= "localhost";
 	private $_userhost	= "root";
@@ -39,14 +39,4 @@ class Database {
 		}
 		return $data;
 	}
-}
-$db = new Database;
-$db->connect();
-$sql = "SELECT * FROM tbl_user ORDER BY id DESC";
-$db->query($sql);
-$row = $db->num_rows();
-echo "So dong trong CSDL: " . $row . "<hr />";
-while ($data = $db->fetch()) {
-	echo $data['username'] . "<br />";
-	echo $data['level'] . "<hr />";
 }
