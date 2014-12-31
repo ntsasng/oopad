@@ -59,8 +59,12 @@ class User extends Database {
 		$this->query($sql);
 	}
 
-	public function checkUser () {
-		$sql = "SELECT * FROM tbl_user WHERE username = '".$this->getUsername()."'";
+	public function checkUser ($id = "") {
+		if ($id != "") {
+			$sql = "SELECT * FROM tbl_user WHERE username = '".$this->getUsername()."' AND id != '$id'";
+		} else {
+			$sql = "SELECT * FROM tbl_user WHERE username = '".$this->getUsername()."'";
+		}
 		$this->query($sql);
 		if ($this->num_rows() == 0) {
 			return true;
@@ -69,8 +73,18 @@ class User extends Database {
 		}
 	}
 
-	public function editUser () {
-		
+	public function getUserdata ($id) {
+		$sql = "SELECT * FROM tbl_user WHERE id = '$id'";
+		$this->query($sql);
+		return $this->fetch();
+	}
+	public function updateUser ($id) {
+		if ($this->getPassword() != "none") {
+			$sql = "UPDATE tbl_user SET username ='".$this->getUsername()."', password = '".$this->getPassword()."', level = '".$this->getLevel()."' WHERE id = '$id'";
+		} else {
+			$sql = "UPDATE tbl_user SET username = '".$this->getUsername()."', level = '".$this->getLevel()."' WHERE id = '$id'";
+		}
+		$this->query($sql);
 	}
 
 	public function delUser ($id) {
